@@ -15,7 +15,7 @@ st.header('**Objetivo principal🎯**')
 st.markdown('#### Disponibilizar painel com valores absolutos de nascidos vivos por mães adolescentes na faixa étaria, com o primeiro grupo sendo 10 a 14 anos e segundo grupo sendo 15 a 19 anos, por UF.')
 
 st.subheader('Metas: ')
-st.write(' * Com a separação dos grupos de faixas étarias, podemos ter uma atenção prioritária no grupo de 10 a 14 anos, que são faixas étarias consideradas mais "perigosas e precárias" para natalidade.')
+st.write(' * Com a separação dos grupos de faixas étarias, podemos ter uma atenção prioritária no grupo de 10 a 14 anos, que são faixas étarias consideradas mais 'perigosas e precárias' para natalidade.')
 st.write(' * Visualizar as UF com maiores casos, para priorizar os investimentos em saúde e educação sexual.')
 
 st.divider()

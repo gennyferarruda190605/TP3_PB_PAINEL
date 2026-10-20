@@ -19,7 +19,7 @@ Quais estados do Brasil, apresentam maior número (absoluto e relativo) de nasci
    4. Visualizar quais são os impactos desse problema
    5. Contextualizar os dados numéricos com conteúdo textual sobre o tema, extraído de fonte jornalística especializada (SCP)
    6. Permitir que o próprio usuário complemente o painel com novos dados (texto ou numéricos), ampliando a análise sem depender de nova coleta
-   7. Oferecer os dados para outros sistemas por meio de uma API, sem que eles precisem "raspar" o painel.
+   7. Oferecer os dados para outros sistemas por meio de uma API, sem que eles precisem 'raspar' o painel.
    8. Organizar o painel em páginas, cada uma respondendo a uma pergunta, com um menu de navegação.
 
 ## 3. Indicadores de sucesso (KPIs)
@@ -74,7 +74,7 @@ Quais estados do Brasil, apresentam maior número (absoluto e relativo) de nasci
 | Arquivo CSV enviado pelo usuário malformado, vazio ou com codificação diferente | leitura nunca levanta exceção — tenta `utf-8-sig`, `utf-8` e `latin-1`, e devolve mensagem de erro amigável em vez de quebrar o app |
 | Cache compartilhado exibir dado de um usuário para outro | dado do upload nunca é cacheado com `st.cache_data` e fica guardado apenas por sessão em `st.session_state` |
 API e painel mostrarem números diferentes	| Os dois usam a mesma função de leitura (obter_dados), nunca uma leitura própria |
-Pedido inválido à API devolver "sucesso" com resposta vazia	| UF declarada com Literal (27 nomes): valor fora da lista recebe erro 422 com o motivo |
+Pedido inválido à API devolver 'sucesso' com resposta vazia	| UF declarada com Literal (27 nomes): valor fora da lista recebe erro 422 com o motivo |
 Filtros voltarem ao padrão quando o usuário troca de página	| preservar_filtros() em comum.py, executada pelo roteador antes de cada página
 Cache duplicado se a leitura for copiada em várias páginas	| leituras cacheadas definidas uma única vez em comum.py e importadas pelas páginas
 Conflito de versões entre FastAPI e Streamlit no mesmo ambiente | dependências da API em requirements-api.txt (com -r requirements.txt), sem copiar versões antigas fixadas

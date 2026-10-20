@@ -1,7 +1,8 @@
 import pandas as pd
 import streamlit as st
+import os
+import requests
 
-from src.data_access import obter_dados
 from src.data_access2 import obter_frases
 
 regioes_map = {
@@ -27,9 +28,21 @@ chaves_preservadas = (
     'eixo_y_up')
 
 
+
+
+url_apli = os.getenv('url_apli', 'http://127.0.0.1:8000')
+
+# Requerimento da API que criei, para utilizar no painel
 @st.cache_data(ttl=3600)
 def organizar_df():
-    df = pd.DataFrame(obter_dados())
+    resposta = requests.get(
+        f'{url_apli}/natalidade',
+        params={'limite': 27},
+        timeout=10)
+    resposta.raise_for_status()
+
+    dados = resposta.json()['dados']
+    df = pd.DataFrame(dados)
     df['regiao'] = (df['id'] // 10).map(regioes_map)
     df['total_nascidos'] = df['faixa_10_a_14'] + df['faixa_15_a_19']
     return df
