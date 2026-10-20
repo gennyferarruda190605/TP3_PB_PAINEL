@@ -1,0 +1,164 @@
+[
+  {
+    "id": 11,
+    "uf": "Rondônia",
+    "faixa_10_a_14": 151,
+    "faixa_15_a_19": 3136
+  },
+  {
+    "id": 12,
+    "uf": "Acre",
+    "faixa_10_a_14": 230,
+    "faixa_15_a_19": 2969
+  },
+  {
+    "id": 13,
+    "uf": "Amazonas",
+    "faixa_10_a_14": 999,
+    "faixa_15_a_19": 14179
+  },
+  {
+    "id": 14,
+    "uf": "Roraima",
+    "faixa_10_a_14": 197,
+    "faixa_15_a_19": 2419
+  },
+  {
+    "id": 15,
+    "uf": "Pará",
+    "faixa_10_a_14": 1440,
+    "faixa_15_a_19": 23505
+  },
+  {
+    "id": 16,
+    "uf": "Amapá",
+    "faixa_10_a_14": 139,
+    "faixa_15_a_19": 2262
+  },
+  {
+    "id": 17,
+    "uf": "Tocantins",
+    "faixa_10_a_14": 214,
+    "faixa_15_a_19": 3425
+  },
+  {
+    "id": 21,
+    "uf": "Maranhão",
+    "faixa_10_a_14": 1050,
+    "faixa_15_a_19": 18086
+  },
+  {
+    "id": 22,
+    "uf": "Piauí",
+    "faixa_10_a_14": 292,
+    "faixa_15_a_19": 5761
+  },
+  {
+    "id": 23,
+    "uf": "Ceará",
+    "faixa_10_a_14": 679,
+    "faixa_15_a_19": 12705
+  },
+  {
+    "id": 24,
+    "uf": "Rio Grande do Norte",
+    "faixa_10_a_14": 219,
+    "faixa_15_a_19": 4495
+  },
+  {
+    "id": 25,
+    "uf": "Paraíba",
+    "faixa_10_a_14": 396,
+    "faixa_15_a_19": 6623
+  },
+  {
+    "id": 26,
+    "uf": "Pernambuco",
+    "faixa_10_a_14": 793,
+    "faixa_15_a_19": 15542
+  },
+  {
+    "id": 27,
+    "uf": "Alagoas",
+    "faixa_10_a_14": 431,
+    "faixa_15_a_19": 7258
+  },
+  {
+    "id": 28,
+    "uf": "Sergipe",
+    "faixa_10_a_14": 194,
+    "faixa_15_a_19": 3865
+  },
+  {
+    "id": 29,
+    "uf": "Bahia",
+    "faixa_10_a_14": 1210,
+    "faixa_15_a_19": 21518
+  },
+  {
+    "id": 31,
+    "uf": "Minas Gerais",
+    "faixa_10_a_14": 814,
+    "faixa_15_a_19": 21640
+  },
+  {
+    "id": 32,
+    "uf": "Espírito Santo",
+    "faixa_10_a_14": 186,
+    "faixa_15_a_19": 5363
+  },
+  {
+    "id": 33,
+    "uf": "Rio de Janeiro",
+    "faixa_10_a_14": 788,
+    "faixa_15_a_19": 18405
+  },
+  {
+    "id": 35,
+    "uf": "São Paulo",
+    "faixa_10_a_14": 1355,
+    "faixa_15_a_19": 40206
+  },
+  {
+    "id": 41,
+    "uf": "Paraná",
+    "faixa_10_a_14": 477,
+    "faixa_15_a_19": 12786
+  },
+  {
+    "id": 42,
+    "uf": "Santa Catarina",
+    "faixa_10_a_14": 224,
+    "faixa_15_a_19": 7664
+  },
+  {
+    "id": 43,
+    "uf": "Rio Grande do Sul",
+    "faixa_10_a_14": 314,
+    "faixa_15_a_19": 9980
+  },
+  {
+    "id": 50,
+    "uf": "Mato Grosso do Sul",
+    "faixa_10_a_14": 274,
+    "faixa_15_a_19": 5195
+  },
+  {
+    "id": 51,
+    "uf": "Mato Grosso",
+    "faixa_10_a_14": 396,
+    "faixa_15_a_19": 7683
+  },
+  {
+    "id": 52,
+    "uf": "Goiás",
+    "faixa_10_a_14": 378,
+    "faixa_15_a_19": 10164
+  },
+  {
+    "id": 53,
+    "uf": "Distrito Federal",
+    "faixa_10_a_14": 99,
+    "faixa_15_a_19": 2506
+  }
+]

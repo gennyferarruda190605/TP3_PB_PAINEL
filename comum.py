@@ -1,0 +1,71 @@
+import pandas as pd
+import streamlit as st
+
+from src.data_access import obter_dados
+from src.data_access2 import obter_frases
+
+regioes_map = {
+    1: 'Norte',
+    2: 'Nordeste',
+    3: 'Sudeste',
+    4: 'Sul',
+    5: 'Centro-Oeste'}
+
+
+chaves_preservadas = (
+    'faixas_selecionadas',    
+    'regioes_selecionadas',
+    'ordenacao',
+    'modo_pizza_uf',          
+    'ufs_selecionadas',
+    'faixas_regioes',         
+    'check_barras',
+    'check_linhas',
+    'sep_csv',                
+    'col_frases',
+    'eixo_x_up',
+    'eixo_y_up')
+
+
+@st.cache_data(ttl=3600)
+def organizar_df():
+    df = pd.DataFrame(obter_dados())
+    df['regiao'] = (df['id'] // 10).map(regioes_map)
+    df['total_nascidos'] = df['faixa_10_a_14'] + df['faixa_15_a_19']
+    return df
+
+
+@st.cache_data(ttl=3600)
+def carregar_df():
+
+    try:
+        return organizar_df()
+    except FileNotFoundError:
+        st.error('Erro: arquivo não foi encontrado. Verifique o arquivo.')
+        st.stop()
+
+
+
+@st.cache_data(ttl=3600)
+def carregar_frases():
+    try:
+        return obter_frases()
+    except FileNotFoundError:
+        st.error('Erro: arquivo não foi encontrado. Verifique o arquivo.')
+        st.stop()
+
+
+
+def inicializar_estado() -> None:
+
+    st.session_state.setdefault('df_enviado', None)     
+    st.session_state.setdefault('nome_arquivo', None)
+    st.session_state.setdefault('df_mesclado', None)
+
+
+
+def preservar_filtros() -> None:
+
+    for chave in chaves_preservadas:
+        if chave in st.session_state:
+            st.session_state[chave] = st.session_state[chave]
