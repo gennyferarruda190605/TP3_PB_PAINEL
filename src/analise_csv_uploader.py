@@ -32,7 +32,7 @@ def ler_csv(conteudo: bytes, sep: str = ',') -> tuple[pd.DataFrame | None, str]:
     try:
         df = pd.read_csv(io.StringIO(texto), sep=sep, engine='python')
     except (pd.errors.ParserError, pd.errors.EmptyDataError) as erro:
-        return None, f'Não foi possível interpretar o CSV com o separador '{sep}': {erro}'
+        return None, f'Não foi possível interpretar o CSV com o separador "{sep}": {erro}'
 
     if df.empty or df.shape[1] == 0:
         return None, 'O CSV não tem nenhuma coluna ou linha de dados.'

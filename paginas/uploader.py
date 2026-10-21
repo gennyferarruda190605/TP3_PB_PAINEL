@@ -25,7 +25,7 @@ if arquivo is not None:
 
     else:
         st.session_state.df_enviado = df_up
-        st.success(f'Arquivo '{arquivo.name}' carregado: {len(df_up)} linhas, {df_up.shape[1]} colunas.')
+        st.success(f'Arquivo "{arquivo.name}" carregado: {len(df_up)} linhas, {df_up.shape[1]} colunas.')
 
 df_up = st.session_state.df_enviado
 

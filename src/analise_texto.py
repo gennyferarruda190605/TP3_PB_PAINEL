@@ -11,7 +11,7 @@ from collections import Counter
 from pathlib import Path
 from wordcloud import WordCloud
 
-from src.data_access2 import ARQUIVO_TEXTO
+from src.coleta_web import ARQUIVO_TEXTO
 
 stop_words = frozenset('''
 a as o os um uma uns umas de do da dos das em no na nos nas por para per com sem sob sobre

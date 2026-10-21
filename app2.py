@@ -24,6 +24,7 @@ pagina = st.navigation(
         ],
         'Notícias': [
             st.Page('paginas/estatisticas.py', title='Estatísticas', icon='📰'),
+            st.Page('paginas/imagens.py', title='Panorama e impactos', icon='🌐'),
             st.Page('paginas/uploader.py', title='Upload de CSV', icon='⬆️'),
         ],
         'Fonte dos Dados': [

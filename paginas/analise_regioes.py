@@ -1,7 +1,7 @@
 import streamlit as st
 from comum import carregar_df
 import plotly.express as px
-
+ 
 df = carregar_df()
 
 # Inseri uma condição para que o usuário possa escolher as faixas etárias, regiões e ordenação do ranking, e assim visualizar a tabela filtrada e os gráficos de barras e linhas.

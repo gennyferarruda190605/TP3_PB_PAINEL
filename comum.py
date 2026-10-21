@@ -2,8 +2,10 @@ import pandas as pd
 import streamlit as st
 import os
 import requests
+import json
+from pathlib import Path
 
-from src.data_access2 import obter_frases
+from src.coleta_web import obter_frases
 
 regioes_map = {
     1: 'Norte',
@@ -27,32 +29,52 @@ chaves_preservadas = (
     'eixo_x_up',
     'eixo_y_up')
 
-
-
+BASE = Path(__file__).resolve().parent
+DADOS_CACHE = BASE / 'data' / 'sample' / 'natalidade_cache.json'
 
 url_apli = os.getenv('url_apli', 'http://127.0.0.1:8000')
 
 # Requerimento da API que criei, para utilizar no painel
 @st.cache_data(ttl=3600)
 def organizar_df():
-    resposta = requests.get(
-        f'{url_apli}/natalidade',
-        params={'limite': 27},
-        timeout=10)
-    resposta.raise_for_status()
 
-    dados = resposta.json()['dados']
+    try:
+        resposta = requests.get(
+            f'{url_apli}/natalidade',
+            params={'limite': 27},
+            timeout=10)
+        resposta.raise_for_status()
+
+        dados = resposta.json()['dados']
+
+# Inclui um tratamento de erro, onde se não consegui conectar a API que criei (já que precisa estar rodando num servidor para funcionar), 
+# o painel irá usar os dados do cachê (Caso você queira ver o painel pelo Streamlit Community)
+
+    except Exception as erro:
+        print(f'Erro na API ({erro}). Carregando cache local...')
+        
+        if DADOS_CACHE.exists():
+            dados = json.loads(DADOS_CACHE.read_text(encoding='utf-8'))
+
+        else:
+            print('Nenhum arquivo cache encontrado para uso.')
+            return []
+
+
     df = pd.DataFrame(dados)
     df['regiao'] = (df['id'] // 10).map(regioes_map)
     df['total_nascidos'] = df['faixa_10_a_14'] + df['faixa_15_a_19']
+
     return df
 
+    
 
 @st.cache_data(ttl=3600)
 def carregar_df():
 
     try:
         return organizar_df()
+
     except FileNotFoundError:
         st.error('Erro: arquivo não foi encontrado. Verifique o arquivo.')
         st.stop()
@@ -69,7 +91,7 @@ def carregar_frases():
 
 
 
-def inicializar_estado() -> None:
+def inicializar_estado():
 
     st.session_state.setdefault('df_enviado', None)     
     st.session_state.setdefault('nome_arquivo', None)
@@ -77,7 +99,7 @@ def inicializar_estado() -> None:
 
 
 
-def preservar_filtros() -> None:
+def preservar_filtros():
 
     for chave in chaves_preservadas:
         if chave in st.session_state:

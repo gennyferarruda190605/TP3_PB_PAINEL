@@ -2,7 +2,7 @@ import streamlit as st
 from comum import carregar_df
 from comum import carregar_frases
 
-
+ 
 frases = carregar_frases()
 
 st.header('Tabela de Dados - Fonte Agregados do IBGE (SIDRA)')

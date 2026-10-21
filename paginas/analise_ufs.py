@@ -1,7 +1,7 @@
 import streamlit as st
 from comum import carregar_df
 import plotly.express as px
-
+ 
 df = carregar_df()
 
 st.header('Análise por UFs')

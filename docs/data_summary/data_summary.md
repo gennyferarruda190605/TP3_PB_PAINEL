@@ -16,15 +16,15 @@
   * 1143: Mães de 15 a 19 anos.
 
 
-## Fonte de Dados -  Web Scpraing
+## Fonte de Dados -  Web Scpraing da SCP
 
 | ITEM | VALOR |
 | ---  | --- |
 | Fonte | Portal SCP - https://www.scp.org.br/gravidez-na-adolescencia-um-desafio-de-saude-publi++ca-que-exige-o-olhar-atento-da-pediatria/ |
 | Seções | Home - Noticias 2026 |
-| Tipo | HTML (Não estruturado - Legível para humanos) |
-| Coleta | Localizado na pasta src/data_access2.py |
-| Saída | Localizado na pasta data/processed/noticias_gravidez_adolescente.txt |
+| Tipo | Página HTML (Não estruturado - Legível para humanos) |
+| Coleta | Localizado em  `src/coletaweb.py`,  usando Requests e BeautifulSoup |
+| Saída | Localizado em  `data/processed/noticias_gravidez_adolescente.txt` |
 
 ### **Observações - Robots.TXT** 
 
@@ -41,7 +41,23 @@ Disallow:
 ### **Observações - Licença** 
 
 Procurei a página sobre a licença e termos, porém, não encontrei, então entrei em contato com os responsavéis, para pedir a permissão do uso dos dados da notícia.
-Foi retornado que estava apta para usar os dados no projeto, porém, com a condição de citação da fonte, no projeto.
+Foi retornado que estava apta para usar os dados no projeto, porém, com a condição de citação da fonte.
+
+## Fonte de Dados — Web scraping da UNFPA
+
+| ITEM | VALOR |
+| --- | --- |
+| Fonte | [Portal UNFPA — Prevenção da gravidez na adolescência](https://brazil.unfpa.org/pt-br/preven%C3%A7%C3%A3o-da-gravidez-na-adolesc%C3%AAncia) |
+| Tipo | Página HTML (Não estruturado - Legível para humanos)  |
+| Permissão | `robots.txt` permite a seção (verificado com `urllib.robotparser`)
+| Coleta | Localizado em `src/coleta_web2.py`,  usando Requests e BeautifulSoup  |
+| Saída | Localizado em `data/processed/texto_unfpa.txt` |
+| Imagens coletadas | `data/processed/imagens/` |
+
+### **Observações — Licença e Termos de Uso**
+
+Consultei no portal, a sessão com os termos de uso dos dados, informa que, para um trabalho acadêmico sem finalidade comercial, pode usar pequenos trechos, desde que identifique a UNFPA como fonte e inclua o link do artigo.
+
 
 
 ## Fonte de Dados - CSV (Via uploader do Streamlit)
@@ -54,8 +70,8 @@ Como não tenho a informação de qual dado será acrescentado na página, para 
 | ---  | --- |
 | Origem | CSV enviado pelo próprio usuário via st.file_uploader |
 | Tipo | Estruturado (CSV), entrada NÃO CONFIÁVEL |
-| Validação | src/analise_csv_uploader:: ler_csv() — devolve (linhas, erro) |
-| Codificações aceitas | utf-8-sig - utf-8 - latin-1 (dentro da função ler_csv()) |
+| Validação | `src/analise_csv_uploader`. `ler_csv()` — devolve (linhas, erro) |
+| Codificações aceitas | utf-8-sig - utf-8 - latin-1 (dentro da função `ler_csv()`) |
 | Procedência | Os dados enviados, recebem a identificação de 'enviada' |
 
 # Estrutura Inicial - Dados API
@@ -87,7 +103,7 @@ No arquivo app.py, importo os dados com as variáveis necessárias retornada pel
 | faixa_15_a_19 | Inteiro| Quantidade de casos da faixa étaria (15 a 19 anos)  |
 
 
-# Estrutura final - Dados WebScraping
+# Estrutura final - Dados WebScraping SCP
 
 | Coluna | Tipo | Objetivo |
 | --- | --- | --- |
@@ -97,6 +113,13 @@ No arquivo app.py, importo os dados com as variáveis necessárias retornada pel
 * Conteúdo jornalístico, público e sob licença aberta; sem dado pessoal (LGPD n/a).
 * A estrutura da página é escolha do dono do site e pode mudar sem aviso — (esse é o motivo da coleta estar separada do app do streamlit).
 * Caso a estrutura mude e o seletor quebrar, o painel continua no ar com os dados salvos da última coleta.
+
+# Estrutura final - Dados WebScraping UNFPA
+
+| Caminho | Tipo | Objetivo | 
+| --- | --- | --- |
+|  `data/processed/texto_unfpa.txt`  | String | Frases da notícia |
+| `data/processed/imagens\imagens.png` | Png | Imagens |
 
 
 # Estrutura final - CSV (Via uploader)
@@ -110,5 +133,6 @@ Não há como definir especifícamente, mas será devolvido um DataFrame.
 
 Optei nesse projeto, limitar os dados no ano de 2023, com intuito de podermos analisar e visualizar a distribuição com os dados mais recentes fornecidos. Escolhi soemnte essas 4 variáveis para a análise no Streamlit, pois, cheguei a uma conclusão que outras variáveis não ofereciam informações úteis para a pesquisa.
 Os dados via API, nos dá informações concretas para análise explorátoria dos casos de fato.
-Os dados via web scraping, oferece informações visando os principais pautas que se dão pelo 'problema atual' e uma visão mais ampla sobre o assunto.
+Os dados via web scraping (portal SCP), oferece informações visando os principais pautas que se dão pelo 'problema atual' e uma visão mais ampla sobre o assunto.
+Os dados via web scraping (portal UNFPA), mostram panoramas de desafios e impactos, que se sucedem pela gravidez precoce, e também valores de casos no ano de 2024, podendo fazer uma comparação em % de casos, com ano de 2023.
 Dados via uploader pelo usuário, completa ambos.

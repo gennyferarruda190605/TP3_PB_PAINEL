@@ -11,7 +11,7 @@ texto = ' '.join(frases)
 
 st.header('Notícia 2023 - Portal SCP📰')
 st.subheader('*Gravidez na adolescência: um desafio de saúde pública que exige o olhar atento da pediatria*')
-st.write('*Fonte: [SCP - Sociedade Catarinense de Pediatria](https://www.scp.org.br/gravidez-na-adolescencia-um-desafio-de-saude-publi++ca-que-exige-o-olhar-atento-da-pediatria/)*')
+st.caption('*Fonte: [SCP - Sociedade Catarinense de Pediatria](https://www.scp.org.br/gravidez-na-adolescencia-um-desafio-de-saude-publi++ca-que-exige-o-olhar-atento-da-pediatria/)*')
 
 st.divider()
 st.subheader('Estatísticas 📉')

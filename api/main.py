@@ -40,7 +40,7 @@ ufs = Literal[
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Script para o método POST, baseado no ensino do professor Thiago 
 
-
+ 
 class NovaObservacao(BaseModel):
     uf: ufs
     texto: str = Field(
